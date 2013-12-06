@@ -203,8 +203,28 @@ function elv_widgets_init() {
 	) );
 	
 	register_sidebar( array(
+		'name' => __( 'ERP & Integration English sidebar', 'elv' ),
+		'id' => 'erp-integration-en',
+		'description' => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
 		'name' => __( 'Business Intelligence sidebar', 'elv' ),
 		'id' => 'business-intelligence',
+		'description' => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
+		'name' => __( 'ERP & Integration English sidebar', 'elv' ),
+		'id' => 'erp-integration-en',
 		'description' => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
@@ -221,10 +241,30 @@ function elv_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+	
+	register_sidebar( array(
+		'name' => __( 'Social Enterprise English sidebar', 'elv' ),
+		'id' => 'social-enterprise-en',
+		'description' => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
 		
 	register_sidebar( array(
 		'name' => __( 'Food & Beverage sidebar', 'elv' ),
 		'id' => 'food-beverage',
+		'description' => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
+		'name' => __( 'Food & Beverage sidebar english', 'elv' ),
+		'id' => 'food-beverage-en',
 		'description' => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
@@ -241,8 +281,40 @@ function elv_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+	
+	register_sidebar( array(
+		'name' => __( 'Manufacturing sidebar', 'elv' ),
+		'id' => 'tillverkningsindustri-en',
+		'description' => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
 }
 add_action( 'widgets_init', 'elv_widgets_init' );
+
+
+
+/**
+* Find a localised dynamic_sidebar
+* Searches for a sidebar with the two letter CC appended after a dash
+* if that is not found it falls back to seaching for a sidebar by slug 
+*
+* @author max.calabrese@ymail.com
+* @param $slug string
+* @global ICL_LANGUAGE_CODE (WPML)
+* @return boolean
+*/
+function elv_it8n_dynamic_sidebar($slug){
+	if (defined("ICL_LANGUAGE_CODE") && dynamic_sidebar($slug + "-" + ICL_LANGUAGE_CODE)) {
+		return true;
+	}
+	elseif (dynamic_sidebar($slug)){
+		return true;
+	}
+	return false;
+}
 
 /**
  * Displays navigation to next/previous pages when applicable.
@@ -576,3 +648,4 @@ function elv_upload_mimes ( $existing_mimes=array() ) {
 	return $existing_mimes;
 }
 add_filter('upload_mimes', 'elv_upload_mimes');
+
