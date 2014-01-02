@@ -57,7 +57,7 @@
 										'container' => false,
 										'menu_id' => false,
 										'menu_class' => 'nav',
-									) ); ?>
+									)); ?>
 								</div>
 		
 							</div>
@@ -77,9 +77,9 @@
 					</nav>
 					
 					<p style="text-align:center;margin: 20px 0 10px 0;" class="hidden-tablet hidden-desktop">
-						<a href="tel:+4654150115" class="btn tel">Ring</a>
-						<a class="email btn" href="mailto:info@elvenite.se">Maila</a>
-						<a class="link-map btn" href="https://maps.google.com/maps?q=Elvenite+AB,+Herrg%C3%A5rdsgatan+6,+Karlstad,+Sverige&hl=sv&ie=UTF8&ll=59.382469,13.506768&spn=0.006328,0.019248&sll=37.322998,-122.032182&sspn=0.158079,0.307961&oq=el&hq=Elvenite+AB,&hnear=Herrg%C3%A5rdsgatan+6,+652+24+Karlstad,+Sverige&t=m&z=16&iwloc=A">Hitta hit</a>
+						<a href="tel:+4654150115" class="btn tel"><?php icl_translate ("header", "vcard", "Ring"); ?></a>
+						<a class="email btn" href="mailto:info@elvenite.se"><?php icl_translate ("header", "vcard", "Maila") ?></a>
+						<a class="link-map btn" href="https://maps.google.com/maps?q=Elvenite+AB,+Herrg%C3%A5rdsgatan+6,+Karlstad,+Sverige&hl=sv&ie=UTF8&ll=59.382469,13.506768&spn=0.006328,0.019248&sll=37.322998,-122.032182&sspn=0.158079,0.307961&oq=el&hq=Elvenite+AB,&hnear=Herrg%C3%A5rdsgatan+6,+652+24+Karlstad,+Sverige&t=m&z=16&iwloc=A"><?php icl_translate("header", "vcard", "Hitta hit")?> </a>
 						<a class="search-dropdown btn">Sök <span class="caret"></span></a>
 					</p>
 					
@@ -96,7 +96,7 @@
 				<div class="navbar-inner">
 					<div class="container-fluid">
 						<a class="btn btn-navbar btn-main-navbar" data-target=".nav-main-collapse">
-							<i class="icon icon-menu"></i> Kompentensområden
+							<i class="icon icon-menu"></i> <?php icl_translate ("header", "buttons", "Kompentensområden"); ?>
 						</a>
 						
 						<div class="nav-collapse collapse nav-main-collapse">
