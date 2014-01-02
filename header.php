@@ -87,7 +87,7 @@
 					<div class="row-fluid row-search">
 						<div class="span12">
 							<?php get_search_form(); ?>
-						</div>git 
+						</div>
 					</div>
 				</div>
 			</div>
