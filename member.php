@@ -1,12 +1,20 @@
 <?php get_header(); ?>
-<?php 
-
-//var_dump($member); 
-
+<?php
 $member_meta = (object) get_user_meta($member->ID);
-
-//var_dump($member_meta);
-
+/**
+ * Get translated bio for member.
+ */
+$member_meta->bio = isset($member_meta->description[0]) ? $member_meta->description[0] : false;
+if ($member_meta->bio) {
+    /**
+    @param $context – the name of the plugin, in a human readable format
+    @param $name – the name of the string which helps the user (or translator) understand what’s being translated.
+    @param $value – the string that needs to be translated.
+     */
+    $member_meta->bio = icl_translate("member_biographies", function() use ($member, $member_meta) {
+        return isset($member_meta->nickname[0]) ? $member_meta->nickname[0] : sprintf("member_%s", $member->ID);
+    }, $member_meta->bio);
+}
 ?>
 <div class="row-fluid vcard">
 	<div class="span3">
@@ -71,16 +79,16 @@ $member_meta = (object) get_user_meta($member->ID);
 		<?php } ?>
 	</div>
 	<div class="span4">
-		<?php if ( $member_meta->description[0] ) { ?>
-			<p><?php echo $member_meta->description[0]; ?></p>
-		<?php } ?>
+		<?php if ( $member_meta->bio ) : ?>
+			<p><?php echo $member_meta->bio; ?></p>
+		<?php endif; ?>
 	</div>
 </div>
 <div class="row-fluid">
 	<div class="span12">
 		<hr />
 		<?php $contact_us_page = get_page_by_path('kontakta-oss'); ?>
-		<a href="<?php echo get_permalink($contact_us_page->ID); ?>">Tillbaka till kontakta oss</a>
+		<a href="<?php echo get_permalink($contact_us_page->ID); ?>"><?php icl_translate("member_pages", "breadcrumb", "Tillbaka till kontakta oss") ?></a>
 	</div>
 </div>
 
